@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "405430446691",
+    "project_id": "adsnova-0",
+    "storage_bucket": "adsnova-0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405430446691:android:58b6657185b0b4be62e656",
+        "android_client_info": {
+          "package_name": "com.example.adsnova"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "405430446691-mvebfajq73vg1fnfftfioe9l5c3evar5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABgkJi-3Lv_2usJwUgyrol6zKklFXdLbs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "405430446691-mvebfajq73vg1fnfftfioe9l5c3evar5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
