@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:quickalert/quickalert.dart';
 
 class loginScreen extends StatefulWidget {
   const loginScreen({super.key});
@@ -54,14 +55,32 @@ class _loginScreenState extends State<loginScreen> {
             const SizedBox(height: 20),
             ElevatedButton(
               style: const ButtonStyle(
+                  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(
+                          bottom: Radius.circular(10),
+                          top: Radius.circular(10)))),
                   backgroundColor: MaterialStatePropertyAll(Colors.blue)),
               onPressed: () async {
                 await FirebaseAuth.instance.verifyPhoneNumber(
                   phoneNumber: "${'+91' + usrPhone.text}",
                   verificationCompleted: (PhoneAuthCredential credential) {},
-                  verificationFailed: (FirebaseAuthException e) {},
+                  verificationFailed: (FirebaseAuthException e) {
+                    QuickAlert.show(
+                      context: context,
+                      type: QuickAlertType.error,
+                      title: 'Oops...',
+                      text: 'OTP Send Failed!',
+                    );
+                  },
                   codeSent: (String verificationId, int? resendToken) {
-                    Navigator.pushNamed(context, '/otp');
+                    QuickAlert.show(
+                      context: context,
+                      type: QuickAlertType.success,
+                      text: 'OTP Send Successfully!',
+                    ).then((value) {
+                      Navigator.pushNamed(context, '/otp');
+                    });
+                    //
                     loginScreen.verify = verificationId;
                   },
                   codeAutoRetrievalTimeout: (String verificationId) {},
