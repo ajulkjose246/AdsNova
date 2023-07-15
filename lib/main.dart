@@ -1,4 +1,5 @@
 import 'package:adsnova/screen/home/home.dart';
+import 'package:adsnova/screen/register/auth.dart';
 import 'package:adsnova/screen/register/login.dart';
 import 'package:adsnova/screen/register/otp.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -26,7 +27,9 @@ class _adsNovaState extends State<adsNova> {
         "/": (context) => loginScreen(),
         "/otp": (context) => otpScreen(),
         "/home": (context) => homeScreen(),
+        "/auth": (context) => authScreen(),
       },
+      initialRoute: "/auth",
     );
   }
 }

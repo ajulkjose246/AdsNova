@@ -14,7 +14,14 @@ class loginScreen extends StatefulWidget {
 TextEditingController usrPhone = TextEditingController();
 
 class _loginScreenState extends State<loginScreen> {
+  final TextEditingController countryCodeController = TextEditingController();
+
   @override
+  void initState() {
+    super.initState();
+    countryCodeController.text = '+91';
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
@@ -38,55 +45,76 @@ class _loginScreenState extends State<loginScreen> {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 30),
-            TextField(
-              controller: usrPhone,
-              keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                      width: 2,
-                      color: Colors.blue), // Replace with your desired color
+            Row(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: TextField(
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    readOnly: true,
+                    enableInteractiveSelection: false,
+                    controller: countryCodeController,
+                    keyboardType: TextInputType.phone,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                      ),
+                    ),
+                  ),
                 ),
-                labelText: 'Phone Number',
-                labelStyle: TextStyle(color: Colors.blue),
-                border: OutlineInputBorder(),
-              ),
+                const SizedBox(width: 10),
+                Expanded(
+                  flex: 4,
+                  child: TextField(
+                    controller: usrPhone,
+                    keyboardType: TextInputType.phone,
+                    decoration: const InputDecoration(
+                      labelText: 'Phone Number',
+                      labelStyle: TextStyle(color: Colors.blue),
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                ),
+              ],
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              style: const ButtonStyle(
-                  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                      borderRadius: BorderRadius.vertical(
-                          bottom: Radius.circular(10),
-                          top: Radius.circular(10)))),
-                  backgroundColor: MaterialStatePropertyAll(Colors.blue)),
-              onPressed: () async {
-                await FirebaseAuth.instance.verifyPhoneNumber(
-                  phoneNumber: "${'+91' + usrPhone.text}",
-                  verificationCompleted: (PhoneAuthCredential credential) {},
-                  verificationFailed: (FirebaseAuthException e) {
-                    QuickAlert.show(
-                      context: context,
-                      type: QuickAlertType.error,
-                      title: 'Oops...',
-                      text: 'OTP Send Failed!',
-                    );
-                  },
-                  codeSent: (String verificationId, int? resendToken) {
-                    QuickAlert.show(
-                      context: context,
-                      type: QuickAlertType.success,
-                      text: 'OTP Send Successfully!',
-                    ).then((value) {
-                      Navigator.pushNamed(context, '/otp');
-                    });
-                    //
-                    loginScreen.verify = verificationId;
-                  },
-                  codeAutoRetrievalTimeout: (String verificationId) {},
-                );
-              },
-              child: const Text('Send OTP'),
+            Container(
+              height: 50,
+              child: ElevatedButton(
+                style: const ButtonStyle(
+                    shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                            bottom: Radius.circular(10),
+                            top: Radius.circular(10)))),
+                    backgroundColor: MaterialStatePropertyAll(Colors.blue)),
+                onPressed: () async {
+                  await FirebaseAuth.instance.verifyPhoneNumber(
+                    phoneNumber: "${'+91' + usrPhone.text}",
+                    verificationCompleted: (PhoneAuthCredential credential) {},
+                    verificationFailed: (FirebaseAuthException e) {
+                      QuickAlert.show(
+                        context: context,
+                        type: QuickAlertType.error,
+                        text: 'OTP Send Failed!',
+                      );
+                    },
+                    codeSent: (String verificationId, int? resendToken) {
+                      QuickAlert.show(
+                        context: context,
+                        type: QuickAlertType.success,
+                        text: 'OTP Send Successfully!',
+                      ).then((value) async {
+                        Navigator.pushNamed(context, '/otp');
+                      });
+                      //
+                      loginScreen.verify = verificationId;
+                    },
+                    codeAutoRetrievalTimeout: (String verificationId) {},
+                  );
+                },
+                child: const Text('Send OTP'),
+              ),
             ),
           ],
         ),

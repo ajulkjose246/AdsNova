@@ -39,6 +39,8 @@ dependencies:
   firebase_core: ^2.14.0
   quickalert: ^1.0.1
   pinput: ^2.2.31
+  sms_autofill: ^2.3.0
+  sms_otp_auto_verify: ^2.0.1
 
 dev_dependencies:
   flutter_test:
