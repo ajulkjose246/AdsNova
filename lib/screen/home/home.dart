@@ -1,3 +1,5 @@
+import 'package:adsnova/screen/register/login.dart';
+import 'package:adsnova/screen/register/otp.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -24,7 +26,7 @@ class _homeScreenState extends State<homeScreen> {
         leading: Icon(null),
         title: Text("Home"),
       ),
-      body: Center(child: Text(user!.phoneNumber!)),
+      body: Center(child: Text("Hai")),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           logoutUser(context);

@@ -14,12 +14,12 @@ class loginScreen extends StatefulWidget {
 TextEditingController usrPhone = TextEditingController();
 
 class _loginScreenState extends State<loginScreen> {
-  final TextEditingController countryCodeController = TextEditingController();
+  final TextEditingController countryCode = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    countryCodeController.text = '+91';
+    countryCode.text = '+91';
   }
 
   Widget build(BuildContext context) {
@@ -53,11 +53,15 @@ class _loginScreenState extends State<loginScreen> {
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                     readOnly: true,
                     enableInteractiveSelection: false,
-                    controller: countryCodeController,
+                    controller: countryCode,
                     keyboardType: TextInputType.phone,
                     decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.horizontal(
+                              left: Radius.circular(10))),
                       focusedBorder: OutlineInputBorder(
+                        borderRadius:
+                            BorderRadius.horizontal(left: Radius.circular(10)),
                         borderSide: BorderSide(color: Colors.grey, width: 1.0),
                       ),
                     ),
@@ -72,7 +76,9 @@ class _loginScreenState extends State<loginScreen> {
                     decoration: const InputDecoration(
                       labelText: 'Phone Number',
                       labelStyle: TextStyle(color: Colors.blue),
-                      border: OutlineInputBorder(),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.horizontal(
+                              right: Radius.circular(10))),
                     ),
                   ),
                 ),
@@ -105,7 +111,9 @@ class _loginScreenState extends State<loginScreen> {
                         type: QuickAlertType.success,
                         text: 'OTP Send Successfully!',
                       ).then((value) async {
-                        Navigator.pushNamed(context, '/otp');
+                        // Navigator.pushNamedAndRemoveUntil(context, '/otp');
+                        Navigator.pushNamedAndRemoveUntil(
+                            context, '/otp', (route) => false);
                       });
                       //
                       loginScreen.verify = verificationId;

@@ -24,9 +24,9 @@ class _adsNovaState extends State<adsNova> {
     return MaterialApp(
       title: "AdsNova",
       routes: {
-        "/": (context) => loginScreen(),
+        "/": (context) => homeScreen(),
         "/otp": (context) => otpScreen(),
-        "/home": (context) => homeScreen(),
+        "/login": (context) => loginScreen(),
         "/auth": (context) => authScreen(),
       },
       initialRoute: "/auth",

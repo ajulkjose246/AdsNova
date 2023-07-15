@@ -6,7 +6,6 @@ import 'package:quickalert/quickalert.dart';
 
 class otpScreen extends StatefulWidget {
   const otpScreen({super.key});
-
   @override
   State<otpScreen> createState() => _otpScreenState();
 }
@@ -73,7 +72,8 @@ class _otpScreenState extends State<otpScreen> {
                       type: QuickAlertType.success,
                       text: 'Phone Verification Success',
                     ).then((value) {
-                      Navigator.pushNamed(context, "/home");
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, '/', (route) => false);
                     });
                   } catch (e) {
                     print("Wrong Otp");
