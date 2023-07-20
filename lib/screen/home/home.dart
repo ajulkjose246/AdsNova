@@ -11,14 +11,15 @@ class homeScreen extends StatefulWidget {
 
 // Check if the user is logged in
 User? user = FirebaseAuth.instance.currentUser;
+int indexNum = 0;
+List homeScreens = const [
+  adsListScreen(),
+  Text("2"),
+  Text("3"),
+  Text("4"),
+];
 
 class _homeScreenState extends State<homeScreen> {
-  @override
-  void initState() {
-    checkUser();
-    super.initState();
-  }
-
   void logoutUser(BuildContext context) async {
     await FirebaseAuth.instance.signOut();
     // ignore: use_build_context_synchronously
@@ -72,22 +73,43 @@ class _homeScreenState extends State<homeScreen> {
                   ])
         ],
       ),
-      body: adsListScreen(),
+      body: homeScreens.elementAt(indexNum),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           logoutUser(context);
         },
         child: Icon(Icons.logout),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+              tooltip: "Home",
+              icon: Icon(Icons.home_outlined),
+              label: 'Home',
+              backgroundColor: Colors.blue),
+          BottomNavigationBarItem(
+              tooltip: "Live TV",
+              icon: Icon(Icons.tv),
+              label: 'Live TV',
+              backgroundColor: Colors.blue),
+          BottomNavigationBarItem(
+              tooltip: "Watch Later",
+              icon: Icon(Icons.watch_later_outlined),
+              label: 'Watch Later',
+              backgroundColor: Colors.blue),
+          BottomNavigationBarItem(
+              tooltip: "Profile",
+              icon: Icon(Icons.person_outlined),
+              label: 'Profile',
+              backgroundColor: Colors.blue),
+        ],
+        currentIndex: indexNum,
+        onTap: (value) {
+          setState(() {
+            indexNum = value;
+          });
+        },
+      ),
     );
-  }
-
-  void checkUser() {
-    user = FirebaseAuth.instance.currentUser;
-    if (user != null) {
-      print(user);
-    } else {
-      print("User Not Found");
-    }
   }
 }
