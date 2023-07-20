@@ -1,6 +1,7 @@
 import 'package:adsnova/screen/home/adslist.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 
 class homeScreen extends StatefulWidget {
   const homeScreen({super.key});
@@ -80,35 +81,49 @@ class _homeScreenState extends State<homeScreen> {
         },
         child: Icon(Icons.logout),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-              tooltip: "Home",
-              icon: Icon(Icons.home_outlined),
-              label: 'Home',
-              backgroundColor: Colors.blue),
-          BottomNavigationBarItem(
-              tooltip: "Live TV",
-              icon: Icon(Icons.tv),
-              label: 'Live TV',
-              backgroundColor: Colors.blue),
-          BottomNavigationBarItem(
-              tooltip: "Watch Later",
-              icon: Icon(Icons.watch_later_outlined),
-              label: 'Watch Later',
-              backgroundColor: Colors.blue),
-          BottomNavigationBarItem(
-              tooltip: "Profile",
-              icon: Icon(Icons.person_outlined),
-              label: 'Profile',
-              backgroundColor: Colors.blue),
-        ],
-        currentIndex: indexNum,
-        onTap: (value) {
-          setState(() {
-            indexNum = value;
-          });
-        },
+      bottomNavigationBar: Container(
+        // color: Colors.black,
+        decoration: BoxDecoration(
+          color: Colors.black,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(15), // Change the top left radius
+            topRight: Radius.circular(15), // Change the top right radius
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: GNav(
+            backgroundColor: Colors.black,
+            color: Colors.white,
+            activeColor: Colors.white,
+            tabBackgroundColor: Color.fromARGB(255, 74, 73, 73),
+            padding: EdgeInsets.all(16),
+            gap: 8,
+            onTabChange: (value) {
+              setState(() {
+                indexNum = value;
+              });
+            },
+            tabs: [
+              GButton(
+                icon: Icons.home,
+                text: "Home",
+              ),
+              GButton(
+                icon: Icons.search,
+                text: "Search",
+              ),
+              GButton(
+                icon: Icons.person,
+                text: "Profile",
+              ),
+              GButton(
+                icon: Icons.settings,
+                text: "Settings",
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
