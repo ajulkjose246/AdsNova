@@ -349,13 +349,13 @@ class _adsListScreenState extends State<adsListScreen> {
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Container(
-                padding: EdgeInsets.only(left: 16, right: 5, bottom: 5, top: 5),
-                width: 150,
-                height: 120,
-                child: const Column(
+                padding: EdgeInsets.only(left: 10, right: 5, top: 5),
+                width: 165,
+                height: 145,
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Align(
+                    const Align(
                       alignment: Alignment.topRight,
                       child: Icon(
                         Icons.image,
@@ -363,17 +363,24 @@ class _adsListScreenState extends State<adsListScreen> {
                         color: Colors.blue,
                       ),
                     ),
-                    Text(
+                    const Text(
                       "GET STARTED",
-                      style: TextStyle(color: Colors.grey),
+                      style: TextStyle(color: Colors.green, fontSize: 7),
                     ),
                     SizedBox(height: 5),
-                    Text(
-                      "Let's strat by adding money to your account",
+                    const Text(
+                      "Let's strat by adding money to your account money to your account",
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.bold,
                       ),
+                    ),
+                    SizedBox(height: 5),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Image.network(
+                          width: 50,
+                          "https://kayrabilisim.com/wp-content/uploads/2020/01/cropped-1200px-Google_Ads_logo.svg_-1024x956.png"),
                     ),
                   ],
                 ),
@@ -385,13 +392,13 @@ class _adsListScreenState extends State<adsListScreen> {
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Container(
-                padding: EdgeInsets.only(left: 16, right: 5, bottom: 5, top: 5),
-                width: 150,
-                height: 120,
-                child: const Column(
+                padding: EdgeInsets.only(left: 10, right: 5, top: 5),
+                width: 165,
+                height: 145,
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Align(
+                    const Align(
                       alignment: Alignment.topRight,
                       child: Icon(
                         Icons.image,
@@ -399,17 +406,24 @@ class _adsListScreenState extends State<adsListScreen> {
                         color: Colors.blue,
                       ),
                     ),
-                    Text(
+                    const Text(
                       "GET STARTED",
-                      style: TextStyle(color: Colors.grey),
+                      style: TextStyle(color: Colors.green, fontSize: 7),
                     ),
                     SizedBox(height: 5),
-                    Text(
-                      "Let's strat by adding money to your account",
+                    const Text(
+                      "Let's strat by adding money to your account money to your account",
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.bold,
                       ),
+                    ),
+                    SizedBox(height: 5),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Image.network(
+                          width: 50,
+                          "https://kayrabilisim.com/wp-content/uploads/2020/01/cropped-1200px-Google_Ads_logo.svg_-1024x956.png"),
                     ),
                   ],
                 ),
