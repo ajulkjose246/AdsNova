@@ -22,7 +22,8 @@ class _authScreenState extends State<authScreen> {
 
     if (user != null) {
       // User is logged in, show home screen.
-      Navigator.pushReplacementNamed(context, '/');
+      // Navigator.pushReplacementNamed(context, '/');
+      Navigator.pushNamedAndRemoveUntil(context, "/", (route) => false);
     } else {
       // User is not logged in, show login screen.
       Navigator.pushReplacementNamed(context, '/login');

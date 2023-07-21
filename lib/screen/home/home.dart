@@ -30,50 +30,10 @@ class _homeScreenState extends State<homeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Icon(null),
-        title: Text("AdsNova"),
-        actions: [
-          PopupMenuButton(
-              onSelected: (value) {},
-              itemBuilder: (context) => [
-                    const PopupMenuItem(
-                        value: "settings",
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Icon(
-                                Icons.settings,
-                                color: Colors.black,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text("Settings"),
-                            )
-                          ],
-                        )),
-                    const PopupMenuItem(
-                        value: "settings",
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Icon(
-                                Icons.person,
-                                color: Colors.black,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text("Profile"),
-                            )
-                          ],
-                        )),
-                  ])
-        ],
-      ),
+      // appBar: AppBar(
+      //   toolbarHeight: -25,
+      // ),
+      backgroundColor: Color.fromRGBO(232, 236, 241, 1),
       body: homeScreens.elementAt(indexNum),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -83,7 +43,7 @@ class _homeScreenState extends State<homeScreen> {
       ),
       bottomNavigationBar: Container(
         // color: Colors.black,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.black,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(15), // Change the top left radius
