@@ -30,9 +30,6 @@ class _homeScreenState extends State<homeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   toolbarHeight: -25,
-      // ),
       backgroundColor: Color.fromRGBO(232, 236, 241, 1),
       body: homeScreens.elementAt(indexNum),
       floatingActionButton: FloatingActionButton(
@@ -42,7 +39,6 @@ class _homeScreenState extends State<homeScreen> {
         child: Icon(Icons.logout),
       ),
       bottomNavigationBar: Container(
-        // color: Colors.black,
         decoration: const BoxDecoration(
           color: Colors.black,
           borderRadius: BorderRadius.only(
@@ -64,20 +60,28 @@ class _homeScreenState extends State<homeScreen> {
                 indexNum = value;
               });
             },
-            tabs: [
+            tabs: const [
               GButton(
+                iconSize: 15,
+                textSize: 15,
                 icon: Icons.home,
                 text: "Home",
               ),
               GButton(
+                iconSize: 15,
+                textSize: 15,
                 icon: Icons.search,
                 text: "Search",
               ),
               GButton(
+                iconSize: 15,
+                textSize: 15,
                 icon: Icons.person,
                 text: "Profile",
               ),
               GButton(
+                iconSize: 15,
+                textSize: 15,
                 icon: Icons.settings,
                 text: "Settings",
               ),
